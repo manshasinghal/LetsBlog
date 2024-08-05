@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Homepage</title>
+    <!-- Custom CSS for styling -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #f0f2f5, #d3cce3, #e9e4f0);
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        margin-top: 4rem;
+      }
+
+      .card {
+        margin-bottom: 2rem;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .card-body {
+        padding: 1rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #333;
+      }
+
+      .btn-view {
+        background: linear-gradient(145deg, #ff4757, #e84118);
+        border: none;
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 0.25rem;
+        color: #fff;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        align-self: center;
+        margin-top: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+      }
+
+      .btn-view:hover {
+        background-color: #e84118;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.12);
+      }
+
+      .btn-view:active {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Additional styling for a more cohesive look */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .col {
+        display: flex;
+        align-items: stretch;
+        padding: 1rem;
+      }
+
+      .col .card {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% blogs.forEach(blog => { %>
+        <div class="col">
+          <div class="card">
+            <img src="<%= blog.coverImageURL %>" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <a href="/blog/<%= blog._id %>" class="btn btn-view">View</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+  </body>
+</html>

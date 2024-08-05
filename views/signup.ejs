@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.0.0/tailwind.min.css">
+  <title>Signup</title>
+  <style>
+    body {
+      background: #e2e8f0;
+      font-family: 'Arial', sans-serif;
+    }
+    .form-container {
+      max-width: 450px;
+      margin: 5rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ddd;
+    }
+    .form-container h2 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .form-label {
+      color: #444;
+      font-weight: 500;
+    }
+    .form-control {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      width: 100%;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
+      outline: none;
+    }
+    .btn-primary {
+      background: #4f46e5;
+      border: none;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      font-size: 1.125rem;
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+      transform: scale(1.05);
+    }
+    .form-text {
+      color: #666;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+    .form-control::placeholder {
+      color: #aaa;
+    }
+    .form-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 30%, transparent 70%);
+      border-radius: 12px;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+
+  <div class="form-container relative">
+    <h2>Create an Account</h2>
+    <form action="/user/signup" method="post">
+      <div class="mb-4">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fullName"
+          name="fullName"
+          placeholder="John Doe"
+          aria-describedby="fullName"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          placeholder="johndoe@example.com"
+          aria-describedby="emailHelp"
+          required
+        />
+      
+      </div>
+      <div class="mb-4">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder=""
+          required
+        />
+      </div>
+      <button type="submit" class="btn-primary">Sign Up</button>
+    </form>
+  </div>
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>
